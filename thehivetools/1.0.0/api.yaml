@@ -1,6 +1,6 @@
 app_version: 1.0.0
 name: TheHive Tools
-description: Debugging  app for Shuffle 
+description: Utility tools for thehive
 tags:
   - TheHive
   - Testing 
@@ -11,16 +11,25 @@ contact_info:
   name: "@MasterTos" 
   url: https://github.com/MasterTos
 actions:
-  - name: repeat_back_to_me
-    description: Repeats the call parameter
+  - name: compute_similar_case
+    description: Comoute and add field for similar case
     parameters:
-      - name: call
-        description: The message to repeat
+      - name: field_type 
+        description: The type to get (alert, case)
+        example: "alert"
+        options:
+          - alert
+          - case
         required: true
-        multiline: true
-        example: "REPEATING: Hello world"
         schema:
           type: string
+      - name: thehive_input
+      description: Data from thehive to compute
+      required: true
+      multiline: true
+      example: '{"data": "Hello world"}'
+      schema:
+        type: string 
     returns:
       schema:
         type: string
