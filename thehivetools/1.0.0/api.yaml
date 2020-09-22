@@ -24,12 +24,12 @@ actions:
         schema:
           type: string
       - name: thehive_input
-      description: Data from thehive to compute
-      required: true
-      multiline: true
-      example: '{"data": "Hello world"}'
-      schema:
-        type: string 
+        description: Data from thehive to compute
+        required: true
+        multiline: true
+        example: '{"data": "Hello world"}'
+        schema:
+          type: string
     returns:
       schema:
         type: string
