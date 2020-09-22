@@ -2,7 +2,6 @@ import asyncio
 import time
 import json
 
-from ioc_finder import find_iocs
 from walkoff_app_sdk.app_base import AppBase
 
 class TheHiveTools(AppBase):
@@ -22,13 +21,20 @@ class TheHiveTools(AppBase):
         """
         super().__init__(redis, logger, console_logger)
 
-    async def compute_similar_case(self, field_type, thehive_data):
+    async def compute_similar_case(self, field_type, thehive_input):
+        try:
+            data = json.loads(thehive_input)
+        except json.decoder.JSONDecodeError as e:
+            print("Parse error: %s" % e) 
+            return thehive_input
+
         if field_type.lower() == "alert":
-            pass
+            artifactCount = len(data["artifacts"])
+            for index, case in enumerate(data["similarCases"]):
+                data["similarCases"][index]["similarPercentage"] = (artifactCount / case["similarArtifactCount"]) * 100
         elif field_type.lower() == "case":
             pass
-
-        return thehive_data
+        return json.dumps(data)
 
 
 if __name__ == "__main__":
