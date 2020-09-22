@@ -22,6 +22,14 @@ class TheHiveTools(AppBase):
         """
         super().__init__(redis, logger, console_logger)
 
+    async def compute_similar_case(self, field_type, thehive_data):
+        if field_type.lower() == "alert":
+            pass
+        elif field_type.lower() == "case":
+            pass
+
+        return thehive_data
+
 
 if __name__ == "__main__":
     asyncio.run(TheHiveTools.run(), debug=True)
