@@ -12,7 +12,7 @@ contact_info:
   url: https://github.com/MasterTos
 actions:
   - name: compute_similar_case
-    description: Comoute and add field for similar case
+    description: Compute and add field 'similarPercentage' for each similar case
     parameters:
       - name: field_type 
         description: The type to get (alert, case)
