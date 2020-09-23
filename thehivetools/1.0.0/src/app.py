@@ -30,6 +30,7 @@ class TheHiveTools(AppBase):
 
         if field_type.lower() == "alert":
             artifactCount = len(data["artifacts"])
+            data["hasSimilarCase"] = True if len(data["similarCases"]) else False
             for index, case in enumerate(data["similarCases"]):
                 data["similarCases"][index]["similarPercentage"] = (artifactCount / case["similarArtifactCount"]) * 100
         elif field_type.lower() == "case":
