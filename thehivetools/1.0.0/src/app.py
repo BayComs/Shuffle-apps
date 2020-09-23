@@ -27,7 +27,7 @@ class TheHiveTools(AppBase):
         # except json.decoder.JSONDecodeError as e:
         #     print("Parse error: %s" % e) 
         #     return thehive_input
-
+        data = thehive_input
         if field_type.lower() == "alert":
             artifactCount = len(data["artifacts"])
             data["hasSimilarCase"] = True if len(data["similarCases"]) else False
